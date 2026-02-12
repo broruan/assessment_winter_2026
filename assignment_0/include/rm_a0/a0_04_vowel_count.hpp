@@ -12,3 +12,7 @@ std::size_t CountVowels(const std::string &line);
 std::string SolveVowelCount(const std::string &input, bool &ok);
 
 } // namespace rm_a0
+
+namespace a0_04_detail{
+    bool IsVowelChar(unsigned char c); 
+}

@@ -16,6 +16,7 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <cstring>
 
 namespace rm_a0 {
 
@@ -114,7 +115,18 @@ namespace {
         bool IsVowelChar(unsigned char c) {
             // TODO: 完成下面函数的实现
             (void)c;
-            return false;
+            int a=0;
+            unsigned char vowe[11]={'a','e','i','o','u','A','E','I','O','U','b'};
+            for(unsigned char *i=vowe;i!=&vowe[10];i++){
+                if(*i==c){
+                    a=1;
+                    break;
+                }
+                else{
+                    a=0;
+                }
+            }
+            return a?true:false;
         }
 
     } // namespace a0_04_detail
@@ -123,7 +135,9 @@ namespace {
 std::size_t CountVowels(const std::string& line) {
     std::size_t count = 0;
     // TODO: 完成下面函数的实现
-        
+    for(int i=0;i<line.length();i++){
+        if(a0_04_detail::IsVowelChar(line[i])) count++;
+    }
     return count;
 }
 
@@ -132,7 +146,7 @@ std::string SolveVowelCount(const std::string& input, bool& ok) {
     std::string line;
     if (!std::getline(in, line)) {
         ok = false;
-        return {};
+        return "";
     }
     ok = true;
     std::ostringstream out;
