@@ -22,26 +22,39 @@ namespace rm_a0 {
 // ==================== A0-01 Temperature ====================
 // TODO: 完成下面函数的实现
 double CelsiusToFahrenheit(double celsius) {
-    (void)celsius;
-    return 0.0;
+    double F = 0.0;
+    F = celsius*9.0/5.0 + 32.0;
+    return F;
 }
 // 这里是格式化输出的函数
 std::string FormatFahrenheit(double fahrenheit) {
-    (void)fahrenheit;
-    return {};
+    std::ostringstream oss;
+    oss<<std::fixed<<std::setprecision(2)<<fahrenheit;
+    return oss.str();
 }
 
 std::string SolveTemperature(const std::string& input, bool& ok) {
-    std::istringstream in(input);
-    double celsius = 0.0;
-    if (!(in >> celsius)) {
-        ok = false;
-        return {};
-    }
+    ok = false;
+    std::string F_str="";
+    std::ostringstream os;
+    try{
 
-    ok = true;
-    return FormatFahrenheit(CelsiusToFahrenheit(celsius));
-}
+           // 解析输入的温度值
+      double celsius = std::stod(input); //转换为double类型
+      double F=CelsiusToFahrenheit(celsius);
+      ok = true;
+      F_str = FormatFahrenheit(F);
+      os<<F_str<<"\n";
+      return os.str();
+    }catch(const std::exception& e){
+      ok = false;
+      return "";
+    }catch(...){
+      ok = false;
+      return "";
+    }
+  }
+
 
 // ==================== A0-02 Leap Year ====================
 // TODO: 完成下面函数的实现
