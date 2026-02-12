@@ -23,12 +23,7 @@ namespace rm_a0 {
     std::string F_str="";
     std::ostringstream os;
     try{
-      std::string cleaned_input = celsius_str;
-      cleaned_input.erase(std::remove(cleaned_input.begin(), cleaned_input.end(), '\n'), cleaned_input.end());
-      cleaned_input.erase(std::remove(cleaned_input.begin(), cleaned_input.end(), ' '), cleaned_input.end());
-
-           // 解析输入的温度值
-      double celsius = std::stod(cleaned_input); //转换为double类型
+      double celsius = std::stod(celsius_str); //转换为double类型
       double F=CelsiusToFahrenheit(celsius);
       ok = true;
       F_str = FormatFahrenheit(F);
