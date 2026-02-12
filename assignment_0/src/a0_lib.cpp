@@ -87,7 +87,9 @@ std::string SolveLeapYear(const std::string& input, bool& ok) {
 long long RangeSum(long long l, long long r) {
     (void)l;
     (void)r;
-    return 0;
+    long long result;
+    result = (l+r)*(r-l+1)/2;
+    return result;
 }
 
 std::string SolveRangeSum(const std::string& input, bool& ok) {
@@ -96,7 +98,7 @@ std::string SolveRangeSum(const std::string& input, bool& ok) {
     long long r = 0;
     if (!(in >> l >> r)) {
         ok = false;
-        return {};
+        return "";
     }
     ok = true;
     std::ostringstream out;
